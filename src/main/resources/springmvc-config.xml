@@ -1,0 +1,48 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!--1.注解驱动-->
+    <mvc:annotation-driven/>
+    <!--2.静态资源过滤-->
+    <mvc:default-servlet-handler/>
+    <!--3.扫描包-->
+    <context:component-scan base-package="com.mh.controller"/>
+    <!--4 使用thymeleaf后需要配置thymeleaf的视图解析器-->
+    <!--    thymeleaf的视图解析器-->
+    <!-- 前端的渲染魔板引擎thymeleaf-->
+    <bean id="templateResolver"
+          class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
+        <property name="prefix" value="/templates/" />
+        <property name="suffix" value=".html" />
+        <property name="characterEncoding" value="UTF-8"/>
+        <property name="templateMode" value="HTML5" />
+    </bean>
+
+    <bean id="templateEngine"
+          class="org.thymeleaf.spring5.SpringTemplateEngine">
+        <property name="templateResolver" ref="templateResolver" />
+    </bean>
+
+    <bean class="org.thymeleaf.spring5.view.ThymeleafViewResolver">
+        <property name="templateEngine" ref="templateEngine" />
+        <property name="characterEncoding" value="UTF-8"/>
+    </bean>
+
+<!--=======================================================================-->
+<!--    <mvc:default-servlet-handler/>-->
+    <mvc:resources mapping="/css/**" location="/css/" />
+    <mvc:resources mapping="/image/**" location="/image/" />
+    <mvc:resources mapping="/picture/**" location="/picture/" />
+    <mvc:resources mapping="/js/**" location="/js/" />
+    <mvc:resources mapping="/font/**" location="/font/" />
+
+</beans>

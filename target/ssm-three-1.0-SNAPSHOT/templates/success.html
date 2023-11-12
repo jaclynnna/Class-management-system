@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="zxx" xmlns:c="http://www.w3.org/1999/XSL/Transform">
+<!--<![endif]-->
+<!-- Begin Head -->
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <style>
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .button-container a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button-container a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body onload="showCurrentTime()">
+<div class="container">
+    <h1>successfully sing in</h1>
+    <div class="message">
+        <h4 th:text="${session.user.uname}"></h4>
+        <p>You have successfully sing in </p>
+        <div id="time"></div>
+    </div>
+</div>
+</body>
+<script>
+    // 在页面加载完成后触发的事件处理函数
+    function showCurrentTime() {
+        // 获取当前时间，并格式化为所需的字符串
+        const now = new Date().toLocaleString();
+        // 将格式化后的时间字符串设置给指定的元素
+        document.getElementById('time').textContent = `Complete time: ${now}`;
+    }
+</script>
+</html>

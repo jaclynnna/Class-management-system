@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<!--<![endif]-->
+<!-- Begin Head -->
+
+<head>
+    <title>SplashDash</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <meta name="MobileOptimized" content="320">
+    <!--Start Style -->
+    <link rel="stylesheet" type="text/css" href="../css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/icofont.min.css">
+	<link rel="stylesheet" href="../css/swiper.min.css">
+    <!--Page Specific -->
+    <link rel="stylesheet" type="text/css" href="../css/nice-select.css">
+    <!--Custom Style -->
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+	<link rel="stylesheet" id="theme-change" type="text/css" href="">
+</head>
+
+
+<body>
+<div class="loader">
+	  <div class="spinner">
+		<img src="../picture/loader.gif" alt="">
+	  </div> 
+	</div>
+    <!-- Main Body -->
+    <div class="page-wrapper">
+        <!-- Header Start -->
+        <div th:insert="~{top :: footerFragment}"></div>
+        <!-- Sidebar Start -->
+        <div th:insert="~{menu :: footerFragment}"></div>
+        <!-- Container Start -->
+        <div class="page-wrapper">
+            <div class="main-content">
+                <!-- Page Title Start -->
+                <div class="row">
+                    <div class="col xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="page-title-wrapper">
+                            <div class="page-title-box">
+                                <h4 class="page-title">Add Students</h4>
+                            </div>
+                            <div class="breadcrumb-list">
+                                <ul>
+                                    <li class="breadcrumb-link">
+                                        <a href="javascript:void(0);"><i class="fas fa-home mr-2"></i>Dashboard</a>
+                                    </li>
+                                    <li class="breadcrumb-link active">User Profile</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Products view Start -->
+				<div class="row">
+                <div class="col-xl-8">
+                  <form class="card" th:action="@{/addUserInfo}">
+                    <div class="card-header">
+                      <h4 class="card-title mb-0"></h4>
+                      <div class="card-options"><a class="card-options-collapse" href="javascript:;" data-bs-toggle="card-collapse" data-bs-original-title="" title=""><i class="fe fe-chevron-up"></i></a><a class="card-options-remove" href="javascript:;" data-bs-toggle="card-remove" data-bs-original-title="" title=""><i class="fe fe-x"></i></a></div>
+                    </div>
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-5">
+                          <div class="mb-3">
+                            <label class="form-label">Name</label>
+                            <input name="uname" class="form-control" type="text" placeholder="Name" data-bs-original-title="" title="">
+                          </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                          <div class="mb-3">
+                            <label class="form-label">Phone</label>
+                            <input name="phone" class="form-control" type="text" placeholder="Phone" data-bs-original-title="" title="">
+                          </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                          <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input name="email" class="form-control" type="email" placeholder="Email" data-bs-original-title="" title="">
+                          </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">role</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" name="role" id="role">
+                                        <option value="1">Student</option>
+                                        <option value="0">Manager</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                          <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input name="password" class="form-control" type="text" placeholder="City" data-bs-original-title="" title="">
+                          </div>
+                        </div>
+                      </div>
+					  <button class="btn btn-primary squer-btn" type="submit" data-bs-original-title="" title="">Click to add user</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <!-- Color Setting -->
+    <!-- Script Start -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+	<script src="../js/swiper.min.js"></script>
+    <!-- Page Specific -->
+    <script src="../js/nice-select.min.js"></script>
+    <!-- Custom Script -->
+    <script src="../js/custom.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mh.mapper.UserMapper">
+    <!--User selectAllByUidAndPassword(String uid,String password);-->
+    <resultMap type="user" id="UserMap">
+        <result property="uid" column="uid" jdbcType="INTEGER"/>
+        <result property="uname" column="uname" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="phone" column="phone" jdbcType="VARCHAR"/>
+        <result property="idcard" column="idcard" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="role" column="role" jdbcType="INTEGER"/>
+        <result property="activation" column="activation" jdbcType="INTEGER"/>
+    </resultMap>
+    <select id="selectAllByUidAndPassword" resultMap="UserMap">
+        select * from user where uid=#{uid} and password=#{password};
+    </select>
+    <!--List<User> selectAllUser();-->
+    <select id="selectAllUser" resultType="user">
+        select * from user
+    </select>
+    <!--int getAllUserCount();-->
+    <select id="getAllUserCount" resultType="int">
+        select COUNT(*) from user;
+    </select>
+    <!--int addUser(User user);-->
+    <insert id="addUser">
+        insert into user(uname, password, phone, idcard, create_time,role, email, address) value(#{uname},#{password},#{phone},#{idcard},#{createTime},#{role},#{email},#{address})
+    </insert>
+    <!--List<User> fuzzy(@Param("fuzzy") String fuzzy);-->
+    <select id="fuzzy" resultMap="UserMap">
+        SELECT * FROM user WHERE CONCAT(uname,uid) LIKE "%"#{fuzzy}"%"
+    </select>
+    <select id="fuzzy1" resultMap="UserMap">
+        SELECT * FROM user WHERE activation = #{fuzzy}
+    </select>
+    <!--int delectUserById(int uid);-->
+    <delete id="delectUserById">
+        delete from user where uid = #{uid}
+    </delete>
+    <!--User getUserById(int uid);-->
+    <select id="getUserById" resultType="user">
+        select * from user where uid=#{uid}
+    </select>
+    <!--int updateUserInfoById(User user);-->
+    <update id="updateUserInfoById">
+        UPDATE user SET uname=#{uname},password=#{password},phone=#{phone},idcard=#{idcard},role=#{role},email=#{email},address=#{address} WHERE uid = #{uid}
+    </update>
+    <!--User byCardGetUname(@Param("uid") int uid); -->
+    <select id="byCardGetUname" resultType="user">
+        select * from user where uid=#{uid}
+    </select>
+    <!--int getUserActivation();-->
+    <select id="getUserActivation" resultType="int">
+        SELECT activation FROM user WHERE uid = #{uid}
+    </select>
+    <select id="getUserNameByUid" resultType="User">
+        select uname from user where uid = #{uid}
+    </select>
+    <!--int exitUserActivation(@Param("uid") int uid);-->
+    <update id="exitUserActivation">
+        update user set activation = #{activation} where uid = #{uid}
+    </update>
+
+    <update id="clearUser">
+        UPDATE user SET activation = 0;
+    </update>
+
+</mapper>
